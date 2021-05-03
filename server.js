@@ -33,6 +33,6 @@
     if(port == null || port == "") {
     	port = 3000;
     }
-
+    console.log(port);
     app.listen(port,()=>{console.log(`Server is running`)});
 
