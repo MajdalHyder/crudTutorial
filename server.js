@@ -8,7 +8,6 @@
     const app = express();
 
     dotenv.config({path:__dirname + '/config.env'});
-    const PORT = process.env.PORT || 8080;
 
     // log requests
     app.use(morgan('tiny'));
@@ -29,4 +28,11 @@
     //default routes
     //load routers
     app.use('/',require('./server/routes/router'))
-    app.listen(PORT,()=>{console.log(`Server is running on http://localhost:${PORT}`)});
+
+    let port = process.env.PORT;
+    if(port == null || port == "") {
+    	port = 3000;
+    }
+
+    app.listen(port,()=>{console.log(`Server is running on http://localhost:${PORT}`)});
+
